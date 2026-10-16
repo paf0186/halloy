@@ -16,7 +16,8 @@ Halloy 2026.9 with two local changes, on branch `dictation-and-zoom`:
 
 ## Building
 
-Requires Rust 1.93 or newer (`rustup toolchain install stable`).
+Requires a recent stable Rust: iced declares 1.93, but 1.93 fails on if-let guards;
+1.99.1 is known to work (`rustup toolchain install stable`).
 
 ```sh
 git clone -b dictation-and-zoom https://github.com/paf0186/halloy.git
@@ -35,6 +36,8 @@ The binary is `target/release/halloy` (`halloy.exe` on Windows).
 3. Config goes in `%AppData%\halloy\`. Copy `contrib\patrick\config.toml` to
    `%AppData%\halloy\config.toml` and `contrib\patrick\themes\*` to
    `%AppData%\halloy\themes\`.
+   Give each machine its own fallback nick (`alt_nicks = ["patrick-win"]` under
+   `[servers.mulberry]`), so a second machine still connects while the first holds `patrick`.
 4. Fonts: install Inter (https://rsms.me/inter/) and JetBrains Mono
    (https://www.jetbrains.com/lp/mono/), or change `[font]` in the config.
 5. The config expects an ssh tunnel on `localhost:16668` to the IRC server's port 6667.
