@@ -170,6 +170,10 @@ iced = { git = "https://github.com/squidowl/iced", rev = "3124ac8a68529d10a34f70
 iced_core = { git = "https://github.com/squidowl/iced", rev = "3124ac8a68529d10a34f708431ffc373615f9470" }
 iced_wgpu = { git = "https://github.com/squidowl/iced", rev = "3124ac8a68529d10a34f708431ffc373615f9470" }
 
+# iced's winit plus macOS dictation fixes (rust-windowing/winit#4666).
+[patch."https://github.com/iced-rs/winit.git"]
+winit = { git = "https://github.com/paf0186/winit", rev = "fa858bf70bb0878ce2d6b15b1569d8639fd20242" }
+
 [profile.packaging]
 inherits = "release"
 lto = "fat"
