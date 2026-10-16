@@ -1,0 +1,22 @@
+# Follows macOS light/dark appearance; themes live in ./themes
+theme = { light = "clear-light", dark = "clear-dark" }
+
+# Quick size changes: ⌘= bigger, ⌘- smaller, ⌘0 reset (custom build; remembered
+# across restarts). The font settings below need a Halloy restart to apply.
+
+[font]
+family = "Inter"
+code = "JetBrains Mono"
+size = 16
+line_height = 1.5
+weight = "normal"
+bold_weight = "semibold"
+
+# ext4-cow chat: ergo on mulberryserver, reached through an ssh tunnel
+# (an ssh tunnel forwards localhost:16668 to the server; see FORK.md)
+[servers.mulberry]
+nickname = "patrick"
+server = "127.0.0.1"
+port = 16668
+use_tls = false
+channels = ["#ext4-cow"]

@@ -1,0 +1,62 @@
+# High-contrast dark theme: near-white text on a neutral charcoal,
+# secondary text still >= 7:1, accents chosen to read on the background.
+
+[general]
+background = "#17181c"
+border = "#3a3d46"
+horizontal_rule = "#3a3d46"
+horizontal_rule_text = "#b8bdc8"
+scrollbar = "#5a5f6b"
+unread_indicator = "#ffb454"
+highlight_indicator = "#ff6b6b"
+
+[text]
+primary = "#eef0f4"
+secondary = "#bfc4ce"
+tertiary = "#9aa1ae"
+success = "#7ee787"
+error = "#ff7b72"
+warning = "#ffb454"
+info = "#79c0ff"
+debug = "#d2a8ff"
+trace = "#9aa1ae"
+
+[buttons.primary]
+background = "#17181c"
+background_hover = "#262830"
+background_selected = "#2f3340"
+background_selected_hover = "#383d4c"
+border_active = "#79c0ff"
+
+[buttons.secondary]
+background = "#23252c"
+background_hover = "#2c2f38"
+background_selected = "#353946"
+background_selected_hover = "#3e4352"
+border_active = "#79c0ff"
+
+[buffer]
+action = { color = "#d2a8ff", font_style = "italic" }
+background = "#17181c"
+background_text_input = "#22242b"
+background_title_bar = "#1e2026"
+border = "#30333b"
+border_selected = "#79c0ff"
+code = "#ffa657"
+focus_border = "#79c0ff"
+focus_background = "#1f2229"
+highlight = "#3d2e14"
+nickname = { color = "#79c0ff", font_style = "bold" }
+nickname_offline = "#8b929f"
+self_message = "#eef0f4"
+selection = "#2f4a6e"
+timestamp = "#8b929f"
+topic = "#bfc4ce"
+url = "#6cb6ff"
+backlog_rule = "#ffb454"
+backlog_rule_text = "#ffb454"
+date_rule = "#3a3d46"
+date_rule_text = "#b8bdc8"
+
+[buffer.server_messages]
+default = "#9aa1ae"

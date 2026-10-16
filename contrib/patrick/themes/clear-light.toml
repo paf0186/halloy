@@ -1,0 +1,62 @@
+# High-contrast light theme: near-black text on white, secondary text
+# still >= 7:1, accents dark enough to read on white.
+
+[general]
+background = "#ffffff"
+border = "#c9ced6"
+horizontal_rule = "#c9ced6"
+horizontal_rule_text = "#3f4550"
+scrollbar = "#9aa1ae"
+unread_indicator = "#b35900"
+highlight_indicator = "#c62828"
+
+[text]
+primary = "#14161a"
+secondary = "#3a3f4a"
+tertiary = "#555c69"
+success = "#1a7f37"
+error = "#c62828"
+warning = "#9a5b00"
+info = "#0b57d0"
+debug = "#7b3fbf"
+trace = "#555c69"
+
+[buttons.primary]
+background = "#ffffff"
+background_hover = "#eef1f5"
+background_selected = "#dde5f1"
+background_selected_hover = "#d0dbeb"
+border_active = "#0b57d0"
+
+[buttons.secondary]
+background = "#f2f4f7"
+background_hover = "#e7eaef"
+background_selected = "#dde5f1"
+background_selected_hover = "#d0dbeb"
+border_active = "#0b57d0"
+
+[buffer]
+action = { color = "#7b3fbf", font_style = "italic" }
+background = "#ffffff"
+background_text_input = "#f2f4f7"
+background_title_bar = "#f6f7f9"
+border = "#d5d9e0"
+border_selected = "#0b57d0"
+code = "#a1430b"
+focus_border = "#0b57d0"
+focus_background = "#f7f9fc"
+highlight = "#fff1cc"
+nickname = { color = "#0b57d0", font_style = "bold" }
+nickname_offline = "#5f6673"
+self_message = "#14161a"
+selection = "#c7dbfb"
+timestamp = "#5f6673"
+topic = "#3a3f4a"
+url = "#0a58ca"
+backlog_rule = "#b35900"
+backlog_rule_text = "#b35900"
+date_rule = "#c9ced6"
+date_rule_text = "#3f4550"
+
+[buffer.server_messages]
+default = "#555c69"
