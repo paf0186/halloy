@@ -165,6 +165,9 @@ pub enum Command {
     OpenConfigFile,
     ShowMutedBuffers,
     HideMutedBuffers,
+    ZoomIn,
+    ZoomOut,
+    ZoomReset,
     FocusUp,
     FocusDown,
     FocusLeft,
@@ -458,6 +461,9 @@ impl KeyBind {
     default!(open_config_file);
     default!(show_muted_buffers);
     default!(hide_muted_buffers);
+    default!(zoom_in, "=", COMMAND);
+    default!(zoom_out, "-", COMMAND);
+    default!(zoom_reset, "0", COMMAND);
     default!(focus_up, ArrowUp, ALT);
     default!(focus_down, ArrowDown, ALT);
     default!(focus_left, ArrowLeft, ALT);

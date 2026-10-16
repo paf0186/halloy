@@ -244,6 +244,28 @@ fn handle_irc_error(e: anyhow::Error) {
     log::error!("{e:#}");
 }
 
+const ZOOM_STEP: f32 = 1.1;
+const ZOOM_MIN: f32 = 0.5;
+const ZOOM_MAX: f32 = 3.0;
+
+fn zoom_path() -> std::path::PathBuf {
+    data::environment::data_dir().join("zoom")
+}
+
+fn load_zoom() -> f32 {
+    std::fs::read_to_string(zoom_path())
+        .ok()
+        .and_then(|s| s.trim().parse::<f32>().ok())
+        .filter(|z| z.is_finite())
+        .map_or(1.0, |z| z.clamp(ZOOM_MIN, ZOOM_MAX))
+}
+
+fn save_zoom(zoom: f32) {
+    if let Err(error) = std::fs::write(zoom_path(), format!("{zoom}\n")) {
+        log::warn!("failed to save zoom level: {error}");
+    }
+}
+
 struct Halloy {
     version: Version,
     screen: Screen,
@@ -259,6 +281,8 @@ struct Halloy {
     pending_logs: Vec<data::log::Record>,
     notifications: Notifications,
     power: system::State,
+    /// Interactive zoom (⌘= / ⌘- / ⌘0), applied on top of `scale_factor`.
+    zoom: f32,
 }
 
 impl Halloy {
@@ -367,6 +391,7 @@ impl Halloy {
                 pending_logs: vec![],
                 notifications,
                 power: system::State::default(),
+                zoom: load_zoom(),
             },
             commands,
         )
@@ -645,6 +670,16 @@ impl Halloy {
                 let track = dashboard.track(Some(&self.clients), &self.config);
 
                 let event_task = match event {
+                    Some(dashboard::Event::Zoom(zoom)) => {
+                        self.zoom = match zoom {
+                            dashboard::Zoom::In => self.zoom * ZOOM_STEP,
+                            dashboard::Zoom::Out => self.zoom / ZOOM_STEP,
+                            dashboard::Zoom::Reset => 1.0,
+                        }
+                        .clamp(ZOOM_MIN, ZOOM_MAX);
+                        save_zoom(self.zoom);
+                        Task::none()
+                    }
                     Some(dashboard::Event::ToggleFullscreen) => {
                         self.main_window.toggle_fullscreen();
                         self.save_main_window_settings()
@@ -1592,7 +1627,7 @@ impl Halloy {
     }
 
     fn scale_factor(&self, _window: window::Id) -> f32 {
-        f32::from(self.config.scale_factor)
+        (f32::from(self.config.scale_factor) * self.zoom).clamp(0.1, 3.0)
     }
 
     fn subscription(&self) -> Subscription<Message> {

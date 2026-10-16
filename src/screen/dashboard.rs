@@ -102,6 +102,13 @@ pub enum Message {
     ConfigReloadComplete,
 }
 
+#[derive(Debug, Clone, Copy)]
+pub enum Zoom {
+    In,
+    Out,
+    Reset,
+}
+
 #[derive(Debug)]
 pub enum Event {
     ConfigReloaded(Result<Config, config::Error>),
@@ -118,6 +125,7 @@ pub enum Event {
     OpenServer(String),
     ImagePreview(Image),
     ToggleFullscreen,
+    Zoom(Zoom),
     Remove(Server),
     PromptBeforeFileUpload {
         upload_url: String,
@@ -1491,6 +1499,13 @@ impl Dashboard {
                     }
                     HideMutedBuffers => {
                         self.buffer_settings.show_muted = false;
+                    }
+                    ZoomIn => return (Task::none(), Some(Event::Zoom(Zoom::In))),
+                    ZoomOut => {
+                        return (Task::none(), Some(Event::Zoom(Zoom::Out)));
+                    }
+                    ZoomReset => {
+                        return (Task::none(), Some(Event::Zoom(Zoom::Reset)));
                     }
                     FocusUp | FocusDown | FocusLeft | FocusRight => {
                         if let Some((window, pane, state)) = self.get_focused()

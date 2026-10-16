@@ -70,6 +70,9 @@ Below is a list of all actions which can be mapped.
 | `highlights`                   | Toggle Highlights Window            | <kbd>⌘</kbd> + <kbd>i</kbd>                         | <kbd>ctrl</kbd> + <kbd>i</kbd>                      |
 | `quit_application`             | Quit Halloy                         | None                                                | None                                                |
 | `open_config_editor`           | Toggle Config Editor Buffer         | <kbd>⌘</kbd> + <kbd>,</kbd>                         | <kbd>ctrl</kbd> + <kbd>,</kbd>                      |
+| `zoom_in`                      | Increase zoom                       | <kbd>⌘</kbd> + <kbd>=</kbd>                         | <kbd>ctrl</kbd> + <kbd>=</kbd>                      |
+| `zoom_out`                     | Decrease zoom                       | <kbd>⌘</kbd> + <kbd>-</kbd>                         | <kbd>ctrl</kbd> + <kbd>-</kbd>                      |
+| `zoom_reset`                   | Reset zoom                          | <kbd>⌘</kbd> + <kbd>0</kbd>                         | <kbd>ctrl</kbd> + <kbd>0</kbd>                      |
 | `open_config_file`             | Open settings file in system editor | None                                                | None                                                |
 | `show_muted_buffers`           | Show muted buffers                  | None                                                | None                                                |
 | `hide_muted_buffers`           | Hide muted buffers                  | None                                                | None                                                |
